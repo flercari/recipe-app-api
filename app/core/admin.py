@@ -9,11 +9,12 @@ from core import models
 
 
 class UserAdmin(BaseUserAdmin):
-    """Define the admin pages for user"""
+    """Define the admin pages for users."""
     ordering = ['id']
     list_display = ['email', 'name']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
+        (_('Personal Info'), {'fields': ('name',)}),
         (
             _('Permissions'),
             {
@@ -21,7 +22,7 @@ class UserAdmin(BaseUserAdmin):
                     'is_active',
                     'is_staff',
                     'is_superuser',
-                )
+                ),
             }
         ),
         (_('Important dates'), {'fields': ('last_login',)}),
